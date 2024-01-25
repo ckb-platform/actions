@@ -1,0 +1,26 @@
+name: 'Refresh Submission'
+description: 'Refresh Submission on CKB platform'
+inputs:
+  username:
+    description: 'CKB username'
+    required: true
+  password:
+    description: 'CKB password'
+    required: true
+  battle_id:
+    description: 'Battle ID'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - id: login
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://codekatabattle.fly.dev/api/v1/auth/login'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{"username": "${{ inputs.username }}", "password": "${{ inputs.password }}"}'
+    - uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://codekatabattle.fly.dev/api/v1/battles/${{ inputs.battle_id }}/submissions'
+        bearerToken: ${{ steps.login.outputs.token }}
