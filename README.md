@@ -21,4 +21,5 @@ jobs:
           username: "${{ secrets.USERNAME }}"
           password: "${{ secrets.PASSWORD }}"
           battle_id: "$BATTLE_ID"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
 ```

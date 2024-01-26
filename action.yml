@@ -10,6 +10,9 @@ inputs:
   battle_id:
     description: 'Battle ID'
     required: true
+  github_token:
+    description: 'Github token'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -23,4 +26,6 @@ runs:
     - uses: fjogeleit/http-request-action@v1
       with:
         url: 'https://codekatabattle.fly.dev/api/v1/battles/${{ inputs.battle_id }}/submissions'
+        method: 'POST'
         bearerToken: ${{ steps.login.outputs.token }}
+        data: '{"github_token": "${{ inputs.github_token }}"}'
