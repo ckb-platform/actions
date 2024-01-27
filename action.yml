@@ -19,7 +19,7 @@ runs:
         data: '{"team_token": "${{ inputs.team_token }}"}'
     - uses: fjogeleit/http-request-action@v1
       with:
-        url: 'https://codekatabattle.fly.dev/api/v1/battles/${{ inputs.battle_id }}/submissions'
+        url: 'https://codekatabattle.fly.dev/api/v1/battles/${{ inputs.battle_id }}/team/refresh'
         method: 'POST'
         bearerToken: ${{ steps.login.outputs.access_token }}
         data: >
