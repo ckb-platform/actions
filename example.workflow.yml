@@ -11,7 +11,5 @@ jobs:
       - id: refresh-submission
         uses: ckb-platform/refresh-submission-action@v1
         with:
-          username: "${{ secrets.USERNAME }}"
-          password: "${{ secrets.PASSWORD }}"
+          team_token: "${{ secrets.TEAM_TOKEN }}"
           battle_id: "$BATTLE_ID"
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
